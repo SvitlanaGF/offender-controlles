@@ -16,11 +16,14 @@ namespace ConsoleApp1.WorkWithFiles
         {
             _filepath = filepath;
         }
-        public string readfile()
+        public List<Driver.Driver> readfile()
         {
-            using(StreamReader sr = new StreamReader(_filepath))
+            XmlSerializer serializer = new XmlSerializer(typeof(Driver.Driver[]));
+            
+            using (Stream reader = new FileStream(_filepath, FileMode.Open))
             {
-                return sr.ReadToEnd();
+                var drivers = (Driver.Driver[])serializer.Deserialize(reader);
+                return drivers.ToList();
             }
         }
 
@@ -38,6 +41,15 @@ namespace ConsoleApp1.WorkWithFiles
             using (var writer = new StreamWriter(_filepath))
             {
                 arrSerializer.Serialize(writer, arrdrivers);
+            }
+        }
+        public void writeinfile(Driver.Driver driver)
+        {
+            
+            var drSerializer = new XmlSerializer(typeof(Driver.Driver));
+            using (var writer = new StreamWriter(_filepath))
+            {
+                drSerializer.Serialize(writer, driver);
             }
         }
     }

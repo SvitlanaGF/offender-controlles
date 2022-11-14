@@ -29,11 +29,18 @@ namespace ConsoleApp1.Detector
 
                 }
             }
+            writetostatistic(count.ToString());
         }
         public void writetostatistic(Driver.Driver driver)
         {
             var fileXML = new FileXMLWorker("static.txt");
             fileXML.writeinfile(driver.ToString());
+
+        }
+        public void writetostatistic(string driver)
+        {
+            var fileXML = new FileXMLWorker("static.txt");
+            fileXML.writeinfile(driver);
 
         }
         public void writeoffender(Driver.Driver driver)

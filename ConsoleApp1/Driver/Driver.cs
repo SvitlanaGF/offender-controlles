@@ -18,5 +18,10 @@ public Driver(TimeOnly hour, string numberOfAuto, string typeOfAuto, double spee
             TypeOfAuto = typeOfAuto;
             Speed = speed;
         }
+        public override string ToString()
+        {
+            return $"Time: {hour}; Number of automobile: {NumberOfAuto}; Type of automobile: {TypeOfAuto}; Speed: {Speed}.";
+        }
     }
+
 }
